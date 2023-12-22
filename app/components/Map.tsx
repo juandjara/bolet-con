@@ -22,9 +22,6 @@ export default function Map({ apiKey }: { apiKey: string }) {
         width="100%"
         height="450"
         style={{ border: 0, borderRadius: '8px', marginBottom: '2rem' }}
-        loading="lazy"
-        allowFullScreen
-        referrerPolicy="no-referrer-when-downgrade"
         src={url}
       ></iframe>
     </>
