@@ -18,10 +18,9 @@ export default function Header() {
         </p>
       </header>
       <div className='mb-12'>
-        {typeof window !== 'undefined' && (
-          // @ts-ignore
-          <tito-button event="bolet-con/2024" class='text-xl block w-max font-sans font-medium py-4 px-6 rounded-md mx-auto bg-white shadow-md transition-shadow hover:shadow-lg hover:bg-gray-100'>¡Consigue tu entrada!</tito-button>
-        )}
+        <a href='https://ti.to/bolet-con/2024' target='_blank' rel='noopener noreferrer'>
+          <button className='text-xl block w-max font-sans font-medium py-4 px-6 rounded-md mx-auto bg-white shadow-md transition-shadow hover:shadow-lg hover:bg-gray-100'>¡Consigue tu entrada!</button>
+        </a>
         <p className='font-sans text-center mt-2 mb-4'>
           Solo quedan <strong className='text-lg'>12</strong>
         </p>
