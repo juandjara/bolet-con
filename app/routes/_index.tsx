@@ -27,7 +27,7 @@ export type Talk = ReturnType<typeof parseTalkFile>
 
 export const loader = async () => {
   const files = await getContentFolder('/talks')
-  const talks = files.map(parseTalkFile)
+  const talks = files.map(parseTalkFile).sort((a, b) => a.start.localeCompare(b.start))
   return { talks, formUrl: process.env.FORM_URL }
 }
 
