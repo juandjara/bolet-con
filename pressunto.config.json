@@ -4,7 +4,7 @@
       "id": "talks",
       "name": "Talks",
       "route": "/content/talks",
-      "template": ""
+      "template": "talk"
     }
   ],
   "templates": [
