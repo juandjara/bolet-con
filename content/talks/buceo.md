@@ -1,8 +1,8 @@
 ---
-speaker_name: Alfredo, impresionista y buzo
 start_time: 
 end_time: 
-speaker_img: https://pbs.twimg.com/profile_images/1656755199367684096/Lzvt4Xgo_400x400.jpg
+speaker_name: Alfredo, impresionista y buzo
+speaker_img: /images/alfredo.jpg
 title: Todas las veces que he estado a punto de morir en el mar
 ---
 

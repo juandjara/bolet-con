@@ -37,7 +37,7 @@ export default function Talks() {
     <section>
       <h2 className='text-2xl font-bold text-center mb-4'>- Agenda -</h2>
       <p className='mx-auto mb-6 text-center'>
-        Usa <a className='underline text-blue-600' href={formUrl} rel="noreferrer">este formulario</a> para enviar una nueva charla o sugerir una modificación a una ya existente
+        Usa <a href={formUrl} target='_blank' rel='noopener noreferrer' className='underline text-blue-600'>este formulario</a> para enviar una nueva charla o sugerir una modificación a una ya existente
       </p>
       {talks?.length ? (
         <ul className='space-y-6'>
