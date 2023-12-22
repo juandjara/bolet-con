@@ -1,6 +1,6 @@
 ---
-start_time: 
-end_time: 
+start_time: "19:10"
+end_time: "19:40"
 speaker_name: Nes, artista y goblin
 speaker_img: https://images.ctfassets.net/cnu0m8re1exe/4txgybYHtUH0z6Dy9IIFGH/e9f4612ef512ae7ad8a580a39557e4d2/Glass_Frog.jpg?fm=jpg&fl=progressive&w=660&h=433&fit=fill
 title: Un paseo por el omegaverse​​​​‌
