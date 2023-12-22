@@ -9,8 +9,8 @@
   ],
   "templates": [
     {
-      "id": "task",
-      "name": "Task",
+      "id": "talk",
+      "name": "Talk",
       "fields": [
         {
           "field": "title",
