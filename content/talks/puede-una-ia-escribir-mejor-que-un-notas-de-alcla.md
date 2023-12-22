@@ -1,6 +1,6 @@
 ---
-start_time: 1230
-end_time: 1260
+start_time: "20:30"
+end_time: "21:00"
 speaker_name: Pablito, bisexual con arito
 speaker_img: /images/pablo.jpg
 title: Puede una IA escribir mejor que un notas de Alcála?
