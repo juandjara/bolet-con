@@ -7,5 +7,42 @@
       "template": ""
     }
   ],
-  "templates": []
+  "templates": [
+    {
+      "id": "task",
+      "name": "Task",
+      "fields": [
+        {
+          "field": "title",
+          "hidden": false,
+          "default": "",
+          "name": ""
+        },
+        {
+          "field": "start_time",
+          "hidden": false,
+          "default": "",
+          "name": ""
+        },
+        {
+          "field": "end_time",
+          "hidden": false,
+          "default": "",
+          "name": ""
+        },
+        {
+          "field": "speaker_name",
+          "hidden": false,
+          "default": "",
+          "name": ""
+        },
+        {
+          "field": "speaker_img",
+          "hidden": false,
+          "default": "",
+          "name": ""
+        }
+      ]
+    }
+  ]
 }
