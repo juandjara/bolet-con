@@ -28,6 +28,9 @@ export function loader() {
   return { apiKey: process.env.GMAPS_API_KEY };
 }
 
+const isDEV = process.env.NODE_ENV === 'development'
+const TITO_URL = isDEV ? 'https://js.tito.io/v2/with/development_mode' : 'https://js.tito.io/v2'
+
 export default function App() {
   const { apiKey } = useLoaderData() as { apiKey: string }
   return (
@@ -47,7 +50,7 @@ export default function App() {
             font-family: Oswald, sans-serif;
           }
         `}</style>
-        <script src='https://js.tito.io/v2/with/development_mode' async></script>
+        <script src={TITO_URL} async></script>
       </head>
       <body>
         <div className="mx-auto max-w-screen-md px-2">
