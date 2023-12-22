@@ -47,6 +47,7 @@ export default function App() {
             font-family: Oswald, sans-serif;
           }
         `}</style>
+        <script src='https://js.tito.io/v2/with/development_mode' async></script>
       </head>
       <body>
         <div className="mx-auto max-w-screen-md px-2">

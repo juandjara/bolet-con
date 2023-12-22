@@ -1,10 +1,6 @@
 import { Link } from "@remix-run/react";
-import { useState } from "react";
-import TicketDialog from "./TicketDialog";
 
 export default function Header() {
-  const [modalOpen, setModalOpen] = useState(false)
-
   return (
     <>
       <header>
@@ -22,16 +18,14 @@ export default function Header() {
         </p>
       </header>
       <div className='mb-12'>
-        <button
-          onClick={() => setModalOpen(true)}
-          className='text-xl block font-sans font-medium py-4 px-6 rounded-md mx-auto bg-white shadow-md transition-shadow hover:shadow-lg hover:bg-gray-100'>
-          ¡Consigue tu entrada!
-        </button>
+        {typeof window !== 'undefined' && (
+          // @ts-ignore
+          <tito-button event="bolet-con/2024" class='text-xl block w-max font-sans font-medium py-4 px-6 rounded-md mx-auto bg-white shadow-md transition-shadow hover:shadow-lg hover:bg-gray-100'>¡Consigue tu entrada!</tito-button>
+        )}
         <p className='font-sans text-center mt-2 mb-4'>
           Solo quedan <strong className='text-lg'>12</strong>
         </p>
       </div>
-      <TicketDialog isOpen={modalOpen} closeModal={() => setModalOpen(false)} />
     </>
   )
 }
