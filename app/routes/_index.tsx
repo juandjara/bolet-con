@@ -8,6 +8,21 @@ export const meta: V2_MetaFunction = () => {
   return [{ title: 'Bolet Con' }]
 }
 
+const START_DATE = new Date('2023-12-28T19:00:00+01:00')
+const DEFAULT_TALK_DURATION = 35 // minutes
+
+function processTalkDates(talks: Talk[]) {
+  for (const talk of talks) {
+    const prevTalk = talks[talk.order - 1]
+    const prevTalkEndDate = prevTalk ? prevTalk.endDate : START_DATE.getTime()
+    const durationMs = (talk.duration || DEFAULT_TALK_DURATION) * 60 * 1000
+    talk.startDate = prevTalkEndDate
+    talk.endDate = prevTalkEndDate + durationMs
+    talk.duration = talk.duration || DEFAULT_TALK_DURATION
+  }
+  return talks
+}
+
 function parseTalkFile(file: ParsedMarkdown) {
   const { title, speaker_name, speaker_img, order, duration } = file.frontmatter
   return {
@@ -16,6 +31,8 @@ function parseTalkFile(file: ParsedMarkdown) {
     duration,
     title,
     description: file.body,
+    startDate: 0,
+    endDate: 0,
     speaker: {
       name: speaker_name,
       img: speaker_img
@@ -27,7 +44,12 @@ export type Talk = ReturnType<typeof parseTalkFile>
 
 export const loader = async () => {
   const files = await getContentFolder('/talks')
-  const talks = files.map(parseTalkFile).sort((a, b) => a.order - b.order)
+  const sortedTalks = files
+    .map(parseTalkFile)
+    .sort((a, b) => a.order - b.order)
+
+  const talks = processTalkDates(sortedTalks)
+
   return { talks, formUrl: process.env.FORM_URL }
 }
 

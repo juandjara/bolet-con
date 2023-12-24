@@ -19,15 +19,9 @@
           "name": ""
         },
         {
-          "field": "start_time",
+          "field": "duration",
           "hidden": false,
-          "default": "",
-          "name": ""
-        },
-        {
-          "field": "end_time",
-          "hidden": false,
-          "default": "",
+          "default": 35,
           "name": ""
         },
         {
