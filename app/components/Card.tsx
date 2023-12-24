@@ -2,18 +2,30 @@ import { ClockIcon } from '@heroicons/react/20/solid'
 import type { Talk } from '~/routes/_index'
 import MDX from './MDX'
 
+const START_DATE = new Date('2023-12-28T18:40:00+01:00')
+const TALK_TIME = 35 // minutes
+
+function formatTime(date: Date) {
+  return date.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  })
+}
+
 export default function Card({ talk }: { talk: Talk }) {
   const firstImage = talk.speaker.img
-  const duration = new Date(`2023-12-28T${talk.end}:00Z`).getTime() - new Date(`2023-12-28T${talk.start}:00Z`).getTime()
+  const durationMs = TALK_TIME * 60 * 1000
+  const halfDurationMs = 20 * 60 * 1000
+  const startDate = START_DATE.getTime() + (talk.order === 0 ? halfDurationMs : (talk.order * durationMs))
+  const endDate = startDate + (talk.order === 0 ? halfDurationMs : durationMs)
+  const duration = endDate - startDate
   
   return (
     <div>
       <p className="text-white text-sm p-2 flex items-center">
         <ClockIcon className='inline-block w-4 h-4 mr-1' />
-        {/* <span>{formatDate(talk.start)}</span>
-        <span>-</span>
-        <span>{formatDate(talk.end)}</span> */}
-        <span>{talk.start} - {talk.end}</span>
+        <span>{formatTime(new Date(startDate))} - {formatTime(new Date(endDate))}</span>
         <span className='mx-2'>|</span>
         <span>{Math.floor(duration / 1000 / 60)} min</span>
       </p>

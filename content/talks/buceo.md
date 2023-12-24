@@ -1,6 +1,4 @@
 ---
-start_time: 1110
-end_time: 1140
 speaker_name: Alfredo, impresionista y buzo
 speaker_img: /images/alfredo.jpg
 title: Todas las veces que he estado a punto de morir en el mar

@@ -9,17 +9,17 @@ export const meta: V2_MetaFunction = () => {
 }
 
 function parseTalkFile(file: ParsedMarkdown) {
-  const { title, speaker_name, speaker_img, start_time, end_time } = file.frontmatter
+  const { title, speaker_name, speaker_img, order, duration } = file.frontmatter
   return {
     id: file.filename,
+    order,
+    duration,
     title,
     description: file.body,
     speaker: {
       name: speaker_name,
       img: speaker_img
     },
-    start: start_time,
-    end: end_time,
   }
 }
 
@@ -27,7 +27,7 @@ export type Talk = ReturnType<typeof parseTalkFile>
 
 export const loader = async () => {
   const files = await getContentFolder('/talks')
-  const talks = files.map(parseTalkFile).sort((a, b) => (a.start || '').localeCompare(b.start || ''))
+  const talks = files.map(parseTalkFile).sort((a, b) => a.order - b.order)
   return { talks, formUrl: process.env.FORM_URL }
 }
 

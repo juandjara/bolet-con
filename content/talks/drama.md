@@ -1,6 +1,4 @@
 ---
-start_time: 1190
-end_time: 1220
 speaker_img: /images/elena.webp
 speaker_name: Elena, Condesa de Van Hutten
 title: Los años del drama
