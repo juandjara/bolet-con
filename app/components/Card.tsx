@@ -34,7 +34,7 @@ export default function Card({ talk }: { talk: Talk }) {
                 src={firstImage}
                 width={40}
                 height={40}
-                className='rounded-full flex-shrink-0'
+                className='h-auto w-10 rounded-full flex-shrink-0'
               />
             ) : <div className='rounded-full flex-shrink-0 w-10 h-10 bg-gray-300' />}
             <p className="text-xs text-gray-500 my-2">

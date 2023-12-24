@@ -2,7 +2,7 @@
 start_time: null
 end_time: null
 speaker_name: Joshua P. West, estadounidense creador del West Combo System
-speaker_img: null
+speaker_img: /images/joshua.jpg
 title: La familia West
 order: 5
 ---
