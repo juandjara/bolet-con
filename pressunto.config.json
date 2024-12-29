@@ -1,13 +1,43 @@
 {
   "collections": [
     {
-      "id": "talks",
-      "name": "Talks",
-      "route": "/content/talks",
+      "id": "talks-2023",
+      "name": "charlas 2023",
+      "route": "/content/talks/2023",
       "template": "talk"
+    },
+    {
+      "id": "talks-2024",
+      "name": "charlas 2024",
+      "route": "/content/talks/2024",
+      "template": "talk"
+    },
+    {
+      "id": "years",
+      "name": "year headers",
+      "route": "/content/years",
+      "template": "year"
     }
   ],
   "templates": [
+    {
+      "id": "year",
+      "name": "Year",
+      "fields": [
+        {
+          "field": "title",
+          "hidden": false,
+          "default": "",
+          "name": ""
+        },
+        {
+          "field": "date",
+          "hidden": false,
+          "default": "",
+          "name": ""
+        }
+      ]
+    },
     {
       "id": "talk",
       "name": "Talk",
