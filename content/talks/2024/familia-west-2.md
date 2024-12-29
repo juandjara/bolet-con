@@ -1,9 +1,9 @@
 ---
-speaker_name: null
+speaker_name: Joshua Ponce West
 speaker_img: null
-title: "- Pausa para cenar"
+title: "La Familia West 2"
 order: 4
-duration: 60
+duration: 30
 ---
 
-Patrocinado por just-eat
+Está vez toca hablar de los sucesos más actuales de la familia West y todo el drama ocurrido en América.

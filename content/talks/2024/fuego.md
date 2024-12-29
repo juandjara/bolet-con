@@ -6,4 +6,4 @@ title: Comentario sobre la piromania
 order: 1
 ---
 
-Un invitado sorpresa dará una breve charla sobre su relación con la piromanía
+Un invitado sorpresa dará una breve charla sobre su relación con la piromanía de maner a 100% objetiva
