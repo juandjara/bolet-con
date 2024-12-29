@@ -26,8 +26,8 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export async function loader() {
-  const address = import.meta.env.VITE_ADDRESS
-  const gmapsKey = import.meta.env.VITE_GMAPS_KEY
+  const address = process.env.ADDRESS
+  const gmapsKey = process.env.GMAPS_KEY
   const files = await getContentFolder(`/years`)
   const years = files.map((f) => {
     const { title, date } = f.frontmatter
