@@ -1,11 +1,15 @@
+import { useRouteLoaderData, Link } from "react-router"
+import type { Year } from "~/lib/talks"
+
 export default function Footer() {
+  const { years } = useRouteLoaderData("root") as { years: Year[] }
   return (
     <footer>
       <p className='text-center mt-8 mb-2'>
         🥳 🥳 🥳
       </p>
       <p className='text-center mb-8'>
-        Gracias por tu inter&eacute;s en el 1º Congreso Internacional de la Boletada.
+        Gracias por tu inter&eacute;s en el Congreso Internacional de la Boletada.
       </p>
       <div className="flex items-center gap-2 my-4">
         <p className="flex-grow">
@@ -34,6 +38,14 @@ export default function Footer() {
         >
           Edit
         </a>
+      </div>
+      <div className="my-4">
+        <span>Ediciones: </span>
+        {years.map((y) => (
+          <Link key={y.year} to={`/${y.year}`} className='mx-2 underline'>
+            {y.year}
+          </Link>
+        ))}
       </div>
     </footer>
   )

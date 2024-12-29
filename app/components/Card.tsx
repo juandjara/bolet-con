@@ -1,6 +1,6 @@
 import { ClockIcon } from '@heroicons/react/20/solid'
-import type { Talk } from '~/routes/_index'
 import MDX from './MDX'
+import type { Talk } from '~/lib/talks'
 
 function formatTime(date: Date) {
   return date.toLocaleTimeString('en-US', {

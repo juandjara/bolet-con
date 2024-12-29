@@ -1,66 +1,94 @@
-import type { LinksFunction } from "@remix-run/node";
 import {
+  isRouteErrorResponse,
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
-} from "@remix-run/react";
+} from "react-router";
 
-import tailwind from "~/tailwind.css";
-import Header from "./components/Header";
-import Map from "./components/Map";
-import Footer from "./components/Footer";
+import type { Route } from "./+types/root";
+import stylesheet from "./app.css?url";
+import { getContentFolder } from "./lib/content.server";
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: tailwind },
-  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-  { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+export const links: Route.LinksFunction = () => [
+  { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
-    rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Oswald:wght@500;700;800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap',
+    rel: "preconnect",
+    href: "https://fonts.gstatic.com",
+    crossOrigin: "anonymous",
   },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Oswald:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+  },
+  { rel: "stylesheet", href: stylesheet },
 ];
 
-export function loader() {
-  return { apiKey: process.env.GMAPS_API_KEY };
+export async function loader() {
+  const address = import.meta.env.VITE_ADDRESS
+  const gmapsKey = import.meta.env.VITE_GMAPS_KEY
+  const files = await getContentFolder(`/years`)
+  const years = files.map((f) => {
+    const { title, date } = f.frontmatter
+    return {
+      title,
+      date,
+      body: f.body,
+      year: parseInt(f.filename)
+    }
+  }).sort((a, b) => b.year - a.year)
+
+  return { years, gmapsKey, address }
 }
 
-export default function App() {
-  const { apiKey } = useLoaderData() as { apiKey: string }
+export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        <style>{`
-          html {
-            background-image: url('/images/bg.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            min-height: 100%;
-            font-family: Oswald, sans-serif;
-          }
-        `}</style>
       </head>
       <body>
-        <div className="mx-auto max-w-screen-md px-2">
-          <Header />
-          <main className='mb-12'>
-            <Outlet />
-          </main>
-          <Map apiKey={apiKey} />
-          <Footer />
-        </div>
+        {children}
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
       </body>
     </html>
+  );
+}
+
+export default function App() {
+  return <Outlet />;
+}
+
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  let message = "Oops!";
+  let details = "An unexpected error occurred.";
+  let stack: string | undefined;
+
+  if (isRouteErrorResponse(error)) {
+    message = error.status === 404 ? "404" : "Error";
+    details =
+      error.status === 404
+        ? "The requested page could not be found."
+        : error.statusText || details;
+  } else if (import.meta.env.DEV && error && error instanceof Error) {
+    details = error.message;
+    stack = error.stack;
+  }
+
+  return (
+    <main className="pt-16 p-4 container mx-auto">
+      <h1>{message}</h1>
+      <p>{details}</p>
+      {stack && (
+        <pre className="w-full p-4 overflow-x-auto">
+          <code>{stack}</code>
+        </pre>
+      )}
+    </main>
   );
 }

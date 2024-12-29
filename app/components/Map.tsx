@@ -1,9 +1,12 @@
-const BASE_URL = 'https://www.google.com/maps/embed/v1/place'
-const ADDRESS = 'Calle Santo Rey 5, Sevilla 41018'
+import { useRouteLoaderData } from "react-router"
 
-export default function Map({ apiKey }: { apiKey: string }) {
+const BASE_URL = 'https://www.google.com/maps/embed/v1/place'
+
+export default function Map() {
+  const { address, gmapsKey } = useRouteLoaderData("root") as { gmapsKey: string; address: string }
+
   if (typeof window === 'undefined') return null
-  if (!apiKey) {
+  if (!gmapsKey) {
     return (
       <div className='text-center'>
         <p className='text-xl font-bold'>- C&oacute;mo llegar -</p>
@@ -12,7 +15,7 @@ export default function Map({ apiKey }: { apiKey: string }) {
     )
   }
 
-  const url = `${BASE_URL}?key=${apiKey}&q=${ADDRESS}`
+  const url = `${BASE_URL}?key=${gmapsKey}&q=${address}`
 
   return (
     <>
