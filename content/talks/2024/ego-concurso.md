@@ -2,8 +2,8 @@
 duration: 30
 speaker_name: Copito et al.
 speaker_img: 
-title: Cuanto conoces a boleto
 order: 2
+title: Cuanto conoces a boleto
 ---
 
-Un grupo de ponentes presentarán a la audiencia un cuestionario con preguntas sobre el anfitrión
+Una ponente presentará a la audiencia un cuestionario con preguntas sobre el anfitrión
