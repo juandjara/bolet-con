@@ -2,7 +2,7 @@
 duration: 10
 speaker_name: Bolet, CTO de Wafrn
 speaker_img: /images/bolet.jpeg
-order: 
+order: 0
 title: Charla de bienvenida
 ---
 
