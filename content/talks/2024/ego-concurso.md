@@ -1,6 +1,6 @@
 ---
 duration: 30
-speaker_name: Copito et al.
+speaker_name: Copito
 speaker_img: 
 order: 2
 title: Cuanto conoces a boleto
