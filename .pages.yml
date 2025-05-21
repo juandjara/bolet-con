@@ -1,6 +1,6 @@
 media:
   input: public/images
-  output: /media
+  output: /images
 content:
   - name: talks
     label: Talks
