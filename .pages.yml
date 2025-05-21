@@ -1,3 +1,23 @@
 media:
   input: public/images
   output: /media
+content:
+  - name: talks
+    label: Talks
+    type: collection
+    path: content/talks
+    subfolders: true
+    view:
+      primary: title
+      fields: [title, speaker_name, duration]
+      sort: [order, title]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - { name: "title", label: "Title", type: "string", required: true }
+      - { name: "duration", label: "Duration", type: "number", options: { step: 1, min: 0 } }
+      - { name: "speaker_name", label: "Speaker name", type: "string" }
+      - { name: "speaker_img", label: "Speaker photo", type: "image" }
+      - { name: "order", label: "Order", type: "number" }
+      - { name: "body", label: "Body", type: "rich-text" }
