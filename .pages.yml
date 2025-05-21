@@ -21,3 +21,15 @@ content:
       - { name: "speaker_img", label: "Speaker photo", type: "image" }
       - { name: "order", label: "Order", type: "number" }
       - { name: "body", label: "Body", type: "rich-text" }
+  - name: years
+    label: Year headers
+    type: collection
+    path: content/years
+    view:
+      primary: title
+      fields: [title, date]
+      sort: [title, date]
+    fields:
+      - { name: "title", label: "Title", type: "string", required: true }
+      - { name: "date", label: "Date", type: "date" }
+      - { name: "body", label: "Body", type: "rich-text" }
