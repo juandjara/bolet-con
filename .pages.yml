@@ -13,7 +13,7 @@ content:
       sort: [order, title]
       default:
         sort: order
-        order: asc
+        order: desc
     fields:
       - { name: "title", label: "Title", type: "string", required: true }
       - { name: "duration", label: "Duration", type: "number", options: { step: 1, min: 0 } }
