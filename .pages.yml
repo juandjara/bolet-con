@@ -9,7 +9,7 @@ content:
     subfolders: true
     view:
       primary: title
-      fields: [title, speaker_name, duration]
+      fields: [order, title, speaker_name, duration]
       sort: [order, title]
       default:
         sort: order
