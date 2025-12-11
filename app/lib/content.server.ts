@@ -1,6 +1,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import {bundleMDX} from 'mdx-bundler'
+import { existsSync } from 'fs'
 
 type PostMeta = {
   title: string
@@ -15,6 +16,10 @@ export type PostListItem = PostMeta & {
 
 export async function getContentFolder(folder: string) {
   const basepath = path.join(process.cwd(), 'content', folder)
+  if (!existsSync(basepath)) {
+    return []
+  }
+
   const directory = await fs.readdir(basepath)
 
   const posts = await Promise.all(
