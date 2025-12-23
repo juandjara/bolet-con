@@ -57,7 +57,6 @@ function Talks({ talks, formUrl }: { talks: Talk[]; formUrl?: string }) {
 
 export default function Year() {
   const { talks, formUrl } = useLoaderData<typeof loader>();
-  console.log(talks);
 
   return (
     <div className="mx-auto max-w-screen-md px-2">
